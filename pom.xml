@@ -47,6 +47,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-core</artifactId>
@@ -173,11 +174,7 @@
             <artifactId>org.wso2.ei.samples</artifactId>
             <version>${product.ei.version}</version>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.ei</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.integrator.core</artifactId>-->
-        <!--            <version>${product.ei.version}</version>-->
-        <!--        </dependency>-->
+
         <dependency>
             <groupId>org.wso2.ei</groupId>
             <artifactId>integration-test-utils</artifactId>
@@ -194,11 +191,18 @@
             <version>${integration.base.version}</version>
             <scope>test</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon.mediation</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.connector.core</artifactId>-->
-        <!--            <version>${carbon.mediation.version}</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.6.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>3.2.4</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
     <build>

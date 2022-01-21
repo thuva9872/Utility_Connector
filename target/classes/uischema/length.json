@@ -11,7 +11,7 @@
         "displayName": "Input String",
         "inputType": "string",
         "defaultValue": "",
-        "required": "true",
+        "required": "false",
         "helpTip": "Connection to be used"
       }
     },

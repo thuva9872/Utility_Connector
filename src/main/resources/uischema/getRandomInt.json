@@ -8,7 +8,7 @@
       "type": "attribute",
       "value": {
         "name": "origin",
-        "displayName": "Origin",
+        "displayName": "Lower bound",
         "inputType": "string",
         "defaultValue": "",
         "required": "false",
@@ -19,7 +19,7 @@
       "type": "attribute",
       "value": {
         "name": "bound",
-        "displayName": "Bound",
+        "displayName": "Upper bound",
         "inputType": "string",
         "defaultValue": "",
         "required": "false",

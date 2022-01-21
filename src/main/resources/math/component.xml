@@ -18,7 +18,7 @@
 -->
 <component name="math" type="synapse/template">
     <subComponents>
-        <component name="math.getRandomInt">
+        <component name="math.GetRandomInt">
             <file>getRandomInt.xml</file>
             <description>Wso2 connector method</description>
         </component>

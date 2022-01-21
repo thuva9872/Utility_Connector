@@ -18,7 +18,7 @@
 -->
 <component name="date" type="synapse/template">
     <subComponents>
-        <component name="date.getDate">
+        <component name="date.GetDate">
             <file>getDate.xml</file>
             <description>Wso2 connector method</description>
         </component>

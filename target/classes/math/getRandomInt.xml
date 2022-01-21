@@ -15,7 +15,7 @@
    specific language governing permissions and limitations
    under the License.
 -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="math.getRandomInt">
+<template xmlns="http://ws.apache.org/ns/synapse" name="math.GetRandomInt">
     <parameter name="origin"/>
     <parameter name="bound"/>
     <parameter name="saveTo"/>
