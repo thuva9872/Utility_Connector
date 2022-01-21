@@ -39,6 +39,7 @@ class GetDateTest{
     @Test
     void testMediate_noTargetPropertyNoDateFormat_currentDateInDateProperty(){
         GetDate getDate=new GetDate();
+        messageContext.setProperty("format","HH:mm:ss");
         try {
             getDate.connect(messageContext);
         } catch (ConnectException e) {
