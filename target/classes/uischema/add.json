@@ -1,0 +1,30 @@
+{
+  "connectorName": "Sample",
+  "operationName": "add",
+  "title": "Add Numbers",
+  "help": "Add two numbers",
+  "elements": [
+    {
+      "type": "arg",
+      "value": {
+        "name": "param1",
+        "displayName": "Number 1",
+        "inputType": "string",
+        "defaultValue": "",
+        "required": "true",
+        "helpTip": "Connection to be used"
+      }
+    },
+    {
+      "type": "attribute",
+      "value": {
+        "name": "param2",
+        "displayName": "Number 2",
+        "inputType": "stringOrExpression",
+        "defaultValue": "",
+        "required": "true",
+        "helpTip": "Connection to be used"
+      }
+    }
+  ]
+}
