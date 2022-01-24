@@ -11,7 +11,7 @@
         "displayName": "Payload",
         "inputType": "stringOrExpression",
         "defaultValue": "",
-        "required": "true",
+        "required": "false",
         "helpTip": "Connection to be used"
       }
     },

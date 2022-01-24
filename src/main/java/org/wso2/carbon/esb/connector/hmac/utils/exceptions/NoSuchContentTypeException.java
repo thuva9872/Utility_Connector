@@ -18,10 +18,17 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.date.utils.constants;
+package org.wso2.carbon.esb.connector.hmac.utils.exceptions;
 
-public class Constant {
+public class NoSuchContentTypeException extends Exception {
 
-    public static final String dateFormat = "yyyy-MM-dd HH:mm:ss";
-    public static final String saveToProperty = "date";
+    public NoSuchContentTypeException(String message) {
+
+        super(message);
+    }
+
+    public NoSuchContentTypeException(String message, Throwable cause) {
+
+        super(message, cause);
+    }
 }

@@ -18,10 +18,11 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.date.utils.constants;
+package org.wso2.carbon.esb.connector.hmac.utils.constants;
 
-public class Constant {
+public class MIMETypes {
 
-    public static final String dateFormat = "yyyy-MM-dd HH:mm:ss";
-    public static final String saveToProperty = "date";
+    public static final String application_json = "application/json";
+    public static final String application_xml = "application/xml";
+    public static final String text_plain = "text/plain";
 }

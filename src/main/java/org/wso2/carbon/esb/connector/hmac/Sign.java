@@ -1,6 +1,6 @@
 /*
  *
- *  * Copyright (c) $.today.year, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *  * Copyright (c) 2022, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *  *
  *  * WSO2 Inc. licenses this file to you under the Apache License,
  *  * Version 2.0 (the "License"); you may not use this file except
@@ -23,9 +23,10 @@ package org.wso2.carbon.esb.connector.hmac;
 import org.apache.synapse.MessageContext;
 import org.wso2.carbon.connector.core.AbstractConnector;
 import org.wso2.carbon.connector.core.ConnectException;
+import org.wso2.carbon.esb.connector.hmac.utils.GetPayload;
 import org.wso2.carbon.esb.connector.hmac.utils.HMACGenerator;
 import org.wso2.carbon.esb.connector.hmac.utils.constants.Constant;
-import org.wso2.carbon.esb.connector.hmac.utils.constants.HmacAlgorithm;
+import org.wso2.carbon.esb.connector.hmac.utils.exceptions.NoSuchContentTypeException;
 import org.wso2.carbon.esb.connector.utils.PropertyReader;
 
 import java.security.InvalidKeyException;
@@ -36,20 +37,29 @@ public class Sign extends AbstractConnector {
 
     @Override
     public void connect(MessageContext messageContext) throws ConnectException {
-        Optional<String> payloadOptional= PropertyReader.getStringProperty(messageContext,"payload");
-        Optional<String> algorithmOptional = PropertyReader.getStringProperty(messageContext,"algorithm");
-        Optional<String> secretOptional=PropertyReader.getStringProperty(messageContext,"secret");
-        Optional<String> saveToPropertyOptional=PropertyReader.getStringProperty(messageContext,"saveTo");
-        String payload=payloadOptional.orElse("");
-        String algorithm=algorithmOptional.orElse(Constant.defaultAlgorithm);
-        String secret=secretOptional.orElse("");
-        String saveToProperty=saveToPropertyOptional.orElse(Constant.saveSignResultTo);
-        log.info("payload: "+payload);
+
+        Optional<String> payloadOptional = PropertyReader.getStringProperty(messageContext, "payload");
+        Optional<String> algorithmOptional = PropertyReader.getStringProperty(messageContext, "algorithm");
+        Optional<String> secretOptional = PropertyReader.getStringProperty(messageContext, "secret");
+        Optional<String> saveToPropertyOptional = PropertyReader.getStringProperty(messageContext, "saveTo");
+
+        String payload = "";
         try {
-            String sign= HMACGenerator.generateSignature(payload,secret,algorithm);
-            messageContext.setProperty(saveToProperty,sign);
+            payload = payloadOptional.orElse(GetPayload.getPayload(messageContext));
+        } catch (NoSuchContentTypeException e) {
+            log.error("Invalid Content-Type", e);
+        }
+
+        String algorithm = algorithmOptional.orElse(Constant.defaultAlgorithm);
+        String secret = secretOptional.orElse("");
+        String saveToProperty = saveToPropertyOptional.orElse(Constant.saveSignResultTo);
+
+        log.info("payload: " + payload);
+        try {
+            String sign = HMACGenerator.generateSignature(payload, secret, algorithm);
+            messageContext.setProperty(saveToProperty, sign);
         } catch (NoSuchAlgorithmException e) {
-            log.error("Invalid Algorithm: ",e);
+            log.error("Invalid Algorithm: ", e);
         } catch (InvalidKeyException e) {
             log.error(e);
         }
