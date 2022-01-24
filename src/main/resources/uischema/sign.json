@@ -1,0 +1,59 @@
+{
+  "connectorName": "Utility",
+  "operationName": "hmac.Sign",
+  "title": "",
+  "help": "",
+  "elements": [
+    {
+      "type": "attribute",
+      "value": {
+        "name": "payload",
+        "displayName": "Payload",
+        "inputType": "stringOrExpression",
+        "defaultValue": "",
+        "required": "true",
+        "helpTip": "Connection to be used"
+      }
+    },
+    {
+      "type": "attribute",
+      "value": {
+        "name": "secret",
+        "displayName": "Secret",
+        "inputType": "stringOrExpression",
+        "defaultValue": "",
+        "required": "true",
+        "helpTip": "Connection to be used"
+      }
+    },
+    {
+      "type": "attribute",
+      "value": {
+        "name": "algorithm",
+        "displayName": "Algorithm",
+        "inputType": "comboOrExpression",
+        "defaultValue": "HmacSHA1",
+        "required": "false",
+        "comboValues": [
+          "HmacSHA1",
+          "HmacSHA256",
+          "HmacSHA384",
+          "HmacSHA512",
+          "HmacMD5"
+        ],
+        "helpTip": "Is there a header in the CSV payload ? Default is Absent"
+      }
+    },
+    {
+      "type": "attribute",
+      "value": {
+        "name": "target",
+        "displayName": "Target",
+        "inputType": "stringOrExpression",
+        "defaultValue": "",
+        "required": "false",
+        "helpTip": "Connection to be used"
+      }
+    }
+  ]
+}

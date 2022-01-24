@@ -3,6 +3,7 @@ package org.wso2.carbon.esb.connector.utils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.MessageContext;
 import org.wso2.carbon.connector.core.util.ConnectorUtils;
+import org.wso2.carbon.esb.connector.utils.exception.InvalidParameterValueException;
 
 import java.util.Optional;
 
@@ -38,5 +39,21 @@ public class PropertyReader {
                 return null;
             }
         });
+    }
+
+    public static Optional<String> getEnumProperty(MessageContext mc,String parameterKey,Class<Enum> enumType) throws InvalidParameterValueException {
+        Optional<String> property = getStringProperty(mc,parameterKey);
+        if(property.isPresent()){
+            try{
+                Optional<String> result=Optional.of( Enum.valueOf(enumType,property.get()).toString());
+                return result;
+            }
+            catch (Exception e){
+                throw new InvalidParameterValueException("Invalid Parameter Value: ",e);
+            }
+        }
+        else{
+            return Optional.empty();
+        }
     }
 }

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!--
    Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 
@@ -16,13 +15,19 @@
    specific language governing permissions and limitations
    under the License.
 -->
-<connector>
-    <component name="Utility" package="org.wso2.carbon.connector">
-        <dependency component="date"/>
-        <dependency component="math"/>
-        <dependency component="string"/>
-        <dependency component="hmac" />
-        <description>WSO2 Utility Connector</description>
-    </component>
-    <icon>icon/icon-small.gif</icon>
-</connector>
+<template xmlns="http://ws.apache.org/ns/synapse" name="hmac.Sign">
+    <parameter name="payload"/>
+    <parameter name="secret"/>
+    <parameter name="algorithm"/>
+    <parameter name="target"/>
+
+    <sequence>
+        <log level="full">
+            <property name="payload" expression="$func:payload"/>
+            <property name="secret" expression="$func:secret"/>
+            <property name="algorithm" expression="$func:algorithm"/>
+            <property name="saveTo" expression="$func:target"/>
+        </log>
+        <class name="org.wso2.carbon.esb.connector.hmac.Sign"/>
+    </sequence>
+</template>

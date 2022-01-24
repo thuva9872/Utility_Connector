@@ -16,13 +16,11 @@
    specific language governing permissions and limitations
    under the License.
 -->
-<connector>
-    <component name="Utility" package="org.wso2.carbon.connector">
-        <dependency component="date"/>
-        <dependency component="math"/>
-        <dependency component="string"/>
-        <dependency component="hmac" />
-        <description>WSO2 Utility Connector</description>
-    </component>
-    <icon>icon/icon-small.gif</icon>
-</connector>
+<component name="hmac" type="synapse/template">
+    <subComponents>
+        <component name="hmac.Sign">
+            <file>sign.xml</file>
+            <description>Wso2 connector method</description>
+        </component>
+    </subComponents>
+</component>

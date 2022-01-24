@@ -18,47 +18,51 @@
 
 package org.wso2.carbon.esb.connector.date;
 
+import org.apache.axis2.AxisFault;
 import org.apache.synapse.MessageContext;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.wso2.carbon.connector.core.ConnectException;
+import org.wso2.carbon.esb.connector.date.util.MessageContextMocker;
 import org.wso2.carbon.esb.connector.utils.PropertyReader;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.Optional;
 
 
 @ExtendWith(MockitoExtension.class)
-class GetDateTest{
+class GetDateTest {
 
     @Mock
     private MessageContext messageContext;
 
     @Test
-    void testMediate_noTargetPropertyNoDateFormat_currentDateInDateProperty(){
-        GetDate getDate=new GetDate();
-        messageContext.setProperty("format","HH:mm:ss");
-        try(MockedStatic<PropertyReader> mockedPR= Mockito.mockStatic(PropertyReader.class)){
-            mockedPR.when(()->PropertyReader.getStringProperty(messageContext,"format")).thenReturn(Optional.empty());
-            mockedPR.when(()->PropertyReader.getStringProperty(messageContext,"saveTo")).thenReturn(Optional.empty());
-            mockedPR.when(()->PropertyReader.getStringProperty(messageContext,"date")).thenCallRealMethod();
-            try {
-                getDate.connect(messageContext);
-            } catch (ConnectException e) {
-                e.printStackTrace();
-            }
-            final String expectedProperty="date";
-            Format formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-            final String expectedDate = formatter.format(new java.util.Date());
-            Assertions.assertEquals(PropertyReader.getStringProperty(messageContext,"date"),expectedDate);
-        }
+    void testMediate_noTargetPropertyNoDateFormat_currentDateInDateProperty() throws AxisFault {
 
-
+        GetDate getDate = new GetDate();
+        messageContext = MessageContextMocker.getSynapseMessageContext();
+        messageContext.setProperty("format", "HH:mm:ss");
+        //        try(MockedStatic<PropertyReader> mockedPR= Mockito.mockStatic(PropertyReader.class)){
+        //            mockedPR.when(()->PropertyReader.getStringProperty(messageContext,"format")).thenReturn
+        //            (Optional.empty());
+        //            mockedPR.when(()->PropertyReader.getStringProperty(messageContext,"saveTo")).thenReturn
+        //            (Optional.empty());
+        //            mockedPR.when(()->PropertyReader.getStringProperty(messageContext,"date")).thenCallRealMethod();
+        //            try {
+        //                getDate.connect(messageContext);
+        //            } catch (ConnectException e) {
+        //                e.printStackTrace();
+        ////            }
+        //            final String expectedProperty="date";
+        //            Format formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        //            final String expectedDate = formatter.format(new java.util.Date());
+        //            Assertions.assertEquals(PropertyReader.getStringProperty(messageContext,"date"),expectedDate);
+        //        }
+        final String expectedProperty = "date";
+        Format formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        final String expectedDate = formatter.format(new java.util.Date());
+        Assertions.assertEquals(PropertyReader.getStringProperty(messageContext, "date"), expectedDate);
     }
 }
