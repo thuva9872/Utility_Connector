@@ -23,10 +23,10 @@ package org.wso2.carbon.esb.connector.hmac;
 import org.apache.synapse.MessageContext;
 import org.wso2.carbon.connector.core.AbstractConnector;
 import org.wso2.carbon.connector.core.ConnectException;
-import org.wso2.carbon.esb.connector.hmac.utils.GetPayload;
 import org.wso2.carbon.esb.connector.hmac.utils.HMACGenerator;
 import org.wso2.carbon.esb.connector.hmac.utils.constants.Constant;
 import org.wso2.carbon.esb.connector.hmac.utils.exceptions.NoSuchContentTypeException;
+import org.wso2.carbon.esb.connector.utils.PayloadReader;
 import org.wso2.carbon.esb.connector.utils.PropertyReader;
 
 import java.security.InvalidKeyException;
@@ -45,9 +45,9 @@ public class Sign extends AbstractConnector {
 
         String payload = "";
         try {
-            payload = payloadOptional.orElse(GetPayload.getPayload(messageContext));
+            payload = payloadOptional.orElse(PayloadReader.getPayload(messageContext));
         } catch (NoSuchContentTypeException e) {
-            log.error("Invalid Content-Type", e);
+            log.error("Invalid Content-Type: ", e);
         }
 
         String algorithm = algorithmOptional.orElse(Constant.defaultAlgorithm);

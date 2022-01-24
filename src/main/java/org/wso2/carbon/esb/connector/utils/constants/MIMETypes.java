@@ -18,7 +18,7 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.hmac.utils.constants;
+package org.wso2.carbon.esb.connector.utils.constants;
 
 public class MIMETypes {
 

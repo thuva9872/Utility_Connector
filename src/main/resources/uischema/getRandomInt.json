@@ -32,9 +32,9 @@
         "name": "saveTo",
         "displayName": "Target Property",
         "inputType": "stringOrExpression",
-        "defaultValue": "",
-        "required": "false",
-        "helpTip": "Enter the property name. (default:'date')"
+        "defaultValue": "random",
+        "required": "true",
+        "helpTip": "Enter the property name. (default:'random')"
       }
     }
   ]

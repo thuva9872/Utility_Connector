@@ -21,9 +21,9 @@
         "name": "saveTo",
         "displayName": "Target Property",
         "inputType": "string",
-        "defaultValue": "",
-        "required": "false",
-        "helpTip": "Connection to be used"
+        "defaultValue": "lower",
+        "required": "true",
+        "helpTip": "Enter the property name. (default:'lower')"
       }
     }
   ]

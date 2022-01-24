@@ -21,9 +21,9 @@
         "name": "saveTo",
         "displayName": "Target Property",
         "inputType": "string",
-        "defaultValue": "",
+        "defaultValue": "length",
         "required": "true",
-        "helpTip": "Connection to be used"
+        "helpTip": "Enter the property name. (default:'length')"
       }
     }
   ]

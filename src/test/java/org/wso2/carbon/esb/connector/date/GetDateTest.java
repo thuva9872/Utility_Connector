@@ -27,6 +27,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.wso2.carbon.connector.core.ConnectException;
 import org.wso2.carbon.esb.connector.date.util.MessageContextMocker;
 import org.wso2.carbon.esb.connector.utils.PropertyReader;
 
@@ -37,15 +38,15 @@ import java.text.SimpleDateFormat;
 @ExtendWith(MockitoExtension.class)
 class GetDateTest {
 
-    @Mock
-    private MessageContext messageContext;
+
 
     @Test
-    void testMediate_noTargetPropertyNoDateFormat_currentDateInDateProperty() throws AxisFault {
+    void testMediate_noTargetPropertyNoDateFormat_currentDateInDateProperty() throws AxisFault, ConnectException {
 
         GetDate getDate = new GetDate();
-        messageContext = MessageContextMocker.getSynapseMessageContext();
+        MessageContext messageContext = MessageContextMocker.getSynapseMessageContext();
         messageContext.setProperty("format", "HH:mm:ss");
+        getDate.connect(messageContext);
         //        try(MockedStatic<PropertyReader> mockedPR= Mockito.mockStatic(PropertyReader.class)){
         //            mockedPR.when(()->PropertyReader.getStringProperty(messageContext,"format")).thenReturn
         //            (Optional.empty());

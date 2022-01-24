@@ -25,8 +25,28 @@ import org.apache.synapse.MessageContext;
 import org.apache.synapse.commons.json.JsonUtil;
 import org.apache.synapse.core.axis2.Axis2MessageContext;
 import org.apache.synapse.util.PayloadHelper;
+import org.wso2.carbon.esb.connector.hmac.utils.exceptions.NoSuchContentTypeException;
+import org.wso2.carbon.esb.connector.utils.constants.MIMETypes;
 
 public class PayloadReader {
+    private static final String payloadTypePropertyName = "messageType";
+
+    public static String getPayload(MessageContext messageContext) throws NoSuchContentTypeException {
+
+        org.apache.axis2.context.MessageContext axis2mc =
+                ((Axis2MessageContext) messageContext).getAxis2MessageContext();
+        String payloadType = (String) axis2mc.getProperty(payloadTypePropertyName);
+        switch (payloadType) {
+            case MIMETypes.application_json:
+                return PayloadReader.getJSONPayload(messageContext);
+            case MIMETypes.application_xml:
+                return PayloadReader.getXMLPayload(messageContext);
+            case MIMETypes.text_plain:
+                return PayloadReader.getTextPayload(messageContext);
+            default:
+                throw new NoSuchContentTypeException("The content type " + payloadType + " is not defined.");
+        }
+    }
 
     public static String getTextPayload(MessageContext messageContext) {
 
