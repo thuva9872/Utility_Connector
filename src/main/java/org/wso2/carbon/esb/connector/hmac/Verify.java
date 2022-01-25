@@ -20,16 +20,62 @@
 
 package org.wso2.carbon.esb.connector.hmac;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.MessageContext;
 import org.wso2.carbon.connector.core.AbstractConnector;
 import org.wso2.carbon.connector.core.ConnectException;
+import org.wso2.carbon.esb.connector.hmac.utils.HMACVerify;
+import org.wso2.carbon.esb.connector.hmac.utils.constants.Constant;
+import org.wso2.carbon.esb.connector.utils.PayloadReader;
+import org.wso2.carbon.esb.connector.utils.PropertyReader;
+import org.wso2.carbon.esb.connector.utils.exception.NoSuchContentTypeException;
+import org.wso2.carbon.esb.connector.utils.exception.PayloadNotFoundException;
 
-import javax.crypto.Mac;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Optional;
 
 public class Verify extends AbstractConnector {
+
+    private static final String signaturePropertyName = "x-hub-signature";
 
     @Override
     public void connect(MessageContext messageContext) throws ConnectException {
 
+        Optional<String> payloadFromOptional = PropertyReader.getStringProperty(messageContext, "payload");
+        Optional<String> customPayloadOptional = PropertyReader.getStringProperty(messageContext, "customPayload");
+        Optional<String> customSignatureOptional = PropertyReader.getStringProperty(messageContext, "signature");
+        Optional<String> algorithmOptional = PropertyReader.getStringProperty(messageContext, "algorithm");
+        Optional<String> secretOptional = PropertyReader.getStringProperty(messageContext, "secret");
+        Optional<String> saveToPropertyOptional = PropertyReader.getStringProperty(messageContext, "saveTo");
+
+        String payload = null;
+        if (payloadFromOptional.isPresent() && StringUtils.equalsIgnoreCase(payloadFromOptional.get(),
+                Constant.payloadFromDefault)) {
+            try {
+                payload = PayloadReader.getPayload(messageContext);
+            } catch (NoSuchContentTypeException e) {
+                log.error("Invalid Content-Type: ", e);
+            } catch (PayloadNotFoundException e) {
+                log.error("No content in the message body", e);
+            }
+        } else {
+            payload = customPayloadOptional.orElse("");
+        }
+
+        String customSignature = customSignatureOptional.orElse("");
+        String algorithm = algorithmOptional.orElse(Constant.defaultAlgorithm);
+        String secret = secretOptional.orElse("");
+        String saveToProperty = saveToPropertyOptional.orElse(Constant.saveVerifyResultTo);
+        boolean verifyResult = false;
+        try {
+            verifyResult = HMACVerify.verify(payload, secret, algorithm, customSignature);
+        } catch (NoSuchAlgorithmException e) {
+            log.error("Invalid Algorithm: ", e);
+        } catch (InvalidKeyException e) {
+            log.error(e);
+        }
+
+        messageContext.setProperty(saveToProperty, verifyResult);
     }
 }
