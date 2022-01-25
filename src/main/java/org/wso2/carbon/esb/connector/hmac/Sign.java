@@ -63,7 +63,6 @@ public class Sign extends AbstractConnector {
         String secret = secretOptional.orElse("");
         String saveToProperty = saveToPropertyOptional.orElse(Constant.saveSignResultTo);
 
-        log.info("payload: " + payload+ " Finished");
         try {
             String sign = HMACGenerator.generateSignature(payload, secret, algorithm);
             messageContext.setProperty(saveToProperty, sign);
