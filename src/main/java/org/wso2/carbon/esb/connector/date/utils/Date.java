@@ -18,24 +18,22 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.string.utils;
+package org.wso2.carbon.esb.connector.date.utils;
 
-import org.apache.commons.lang.StringUtils;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 
-public class CaseTransformer {
+public class Date {
 
-    private CaseTransformer() {
+    public static String getDate(String dateFormat) {
 
-    }
-
-    public static String transformToLowerCase(String string) {
-        String transformedString = StringUtils.lowerCase(string);
-        return transformedString;
-    }
-
-    public static String transformToUpperCase(String string) {
-
-        String transformedString = StringUtils.upperCase(string);
-        return transformedString;
+        Format formatter = null;
+        try {
+            formatter = new SimpleDateFormat(dateFormat);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Illegal date format",e);
+        }
+        String date = formatter.format(new java.util.Date());
+        return date;
     }
 }

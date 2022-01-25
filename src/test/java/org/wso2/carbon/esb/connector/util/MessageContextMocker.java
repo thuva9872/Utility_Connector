@@ -18,7 +18,7 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.date.util;
+package org.wso2.carbon.esb.connector.util;
 
 import org.apache.axiom.util.UIDGenerator;
 import org.apache.axis2.AxisFault;

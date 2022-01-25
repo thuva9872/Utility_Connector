@@ -39,8 +39,14 @@ public class HMACGenerator {
             final SecretKeySpec signingKey = new SecretKeySpec(secret.getBytes(), algorithm);
             mac.init(signingKey);
             return toHexString(mac.doFinal(payload.getBytes()));
-        } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-            throw e;
+        } catch (NoSuchAlgorithmException e) {
+            throw new NoSuchAlgorithmException("Invalid algorithm",e);
+        }
+        catch (InvalidKeyException e) {
+            throw new InvalidKeyException("Invalid signingKey",e);
+        }
+        catch (NullPointerException e){
+            throw new NullPointerException("Invalid secret");
         }
     }
 

@@ -45,11 +45,16 @@ public class RegexMatcher extends AbstractConnector {
         String saveToProperty = saveToPropertyOptional.orElse(Constant.saveToPropertyRegexMatcher);
 
         try {
-            Boolean matching = Pattern.matches(regex, input);
+            Boolean matching = matches(regex, input);
             messageContext.setProperty(saveToProperty, matching.toString());
         } catch (PatternSyntaxException e) {
             log.error("Invalid regular expression:", e);
         }
+    }
+
+    private Boolean matches(String regex,String input){
+        Boolean matching = Pattern.matches(regex, input);
+        return matching;
     }
 }
 

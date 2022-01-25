@@ -37,7 +37,7 @@ public class Sign extends AbstractConnector {
 
     @Override
     public void connect(MessageContext messageContext) throws ConnectException {
-
+        log.info(messageContext.getEnvelope().getBody());
         Optional<String> payloadOptional = PropertyReader.getStringProperty(messageContext, "payload");
         Optional<String> algorithmOptional = PropertyReader.getStringProperty(messageContext, "algorithm");
         Optional<String> secretOptional = PropertyReader.getStringProperty(messageContext, "secret");

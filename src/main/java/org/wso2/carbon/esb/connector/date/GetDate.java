@@ -23,6 +23,7 @@ package org.wso2.carbon.esb.connector.date;
 import org.apache.synapse.MessageContext;
 import org.wso2.carbon.connector.core.AbstractConnector;
 import org.wso2.carbon.connector.core.ConnectException;
+import org.wso2.carbon.esb.connector.date.utils.Date;
 import org.wso2.carbon.esb.connector.date.utils.constants.Constant;
 
 import java.text.Format;
@@ -42,11 +43,10 @@ public class GetDate extends AbstractConnector {
         String saveToProperty = saveToPropertyOptional.orElse(Constant.saveToProperty);
 
         try {
-            Format formatter = new SimpleDateFormat(dateFormat);
-            String date = formatter.format(new java.util.Date());
+            String date = Date.getDate(dateFormat);
             messageContext.setProperty(saveToProperty, date);
         } catch (IllegalArgumentException exception) {
-            log.error("Illegal format argument:", exception);
+            log.error(exception);
         }
     }
 }
