@@ -18,12 +18,12 @@
     {
       "type": "attribute",
       "value": {
-        "name": "saveTo",
+        "name": "target",
         "displayName": "Target Property",
         "inputType": "string",
-        "defaultValue": "",
-        "required": "false",
-        "helpTip": "Connection to be used"
+        "defaultValue": "upper",
+        "required": "true",
+        "helpTip": "Enter the property name. (default:'upper')"
       }
     }
   ]

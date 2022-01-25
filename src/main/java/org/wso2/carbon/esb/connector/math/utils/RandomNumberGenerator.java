@@ -40,7 +40,11 @@ public class RandomNumberGenerator {
     }
 
     public static int generateRandomInteger(int origin, int bound) {
-
-        return ThreadLocalRandom.current().nextInt(origin, bound);
+        try{
+            return ThreadLocalRandom.current().nextInt(origin, bound);
+        }
+        catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("Lower bound > Upper bound",e);
+        }
     }
 }

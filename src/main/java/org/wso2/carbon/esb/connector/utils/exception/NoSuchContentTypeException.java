@@ -18,24 +18,17 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.string.utils;
+package org.wso2.carbon.esb.connector.utils.exception;
 
-import org.apache.commons.lang.StringUtils;
+public class NoSuchContentTypeException extends Exception {
 
-public class CaseTransformer {
+    public NoSuchContentTypeException(String message) {
 
-    private CaseTransformer() {
-
+        super(message);
     }
 
-    public static String transformToLowerCase(String string) {
-        String transformedString = StringUtils.lowerCase(string);
-        return transformedString;
-    }
+    public NoSuchContentTypeException(String message, Throwable cause) {
 
-    public static String transformToUpperCase(String string) {
-
-        String transformedString = StringUtils.upperCase(string);
-        return transformedString;
+        super(message, cause);
     }
 }

@@ -18,40 +18,39 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.date;
+package org.wso2.carbon.esb.connector.string;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.wso2.carbon.esb.connector.date.utils.Date;
+import org.wso2.carbon.esb.connector.string.utils.CaseTransformer;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
-
+import java.util.Locale;
 
 @ExtendWith(MockitoExtension.class)
-class GetDateTest {
-
-
+public class CaseTransformerTest {
 
     @Test
-    void test_getDate_legalDateFormat()  {
+    void test_transformToUpperCase_returnsUpperCaseString(){
+        String input="qwerty123@$";
+        String transformed= CaseTransformer.transformToUpperCase(input);
+        Assertions.assertEquals(transformed,input.toUpperCase());
 
-        String actualDate=Date.getDate("yyyy/MM/dd HH:mm:ss");
-        Format formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        final String expectedDate = formatter.format(new java.util.Date());
-        Assertions.assertEquals(actualDate,expectedDate);
+        input="qWeRtY[]{}$@";
+        transformed= CaseTransformer.transformToUpperCase(input);
+        Assertions.assertEquals(transformed,input.toUpperCase());
+
     }
 
     @Test
-    void test_getDate_illegalDateFormat(){
+    void test_transformToLowerCase_returnsLowerCaseString(){
+        String input="QWERTY123@$";
+        String transformed= CaseTransformer.transformToLowerCase(input);
+        Assertions.assertEquals(transformed,input.toLowerCase());
 
-        Exception exception= Assertions.assertThrows(IllegalArgumentException.class,()->Date.getDate("aff/dsf/asf"));
-        String expectedMessage="Illegal date format";
-        Assertions.assertEquals(expectedMessage,exception.getMessage());
-
-        exception= Assertions.assertThrows(IllegalArgumentException.class,()->Date.getDate("x@#"));
-        Assertions.assertEquals(expectedMessage,exception.getMessage());
+        input="qWeRtY[]{}$@";
+        transformed= CaseTransformer.transformToLowerCase(input);
+        Assertions.assertEquals(transformed,input.toLowerCase());
     }
 }

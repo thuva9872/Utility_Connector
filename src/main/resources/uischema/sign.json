@@ -9,10 +9,30 @@
       "value": {
         "name": "payload",
         "displayName": "Payload",
+        "inputType": "comboOrExpression",
+        "defaultValue": "Body",
+        "required": "false",
+        "comboValues": [
+         "Body",
+          "Custom"
+        ],
+        "helpTip": ""
+      }
+    },
+    {
+      "type": "attribute",
+      "value": {
+        "name": "customPayload",
+        "displayName": "Custom Payload",
         "inputType": "stringOrExpression",
         "defaultValue": "",
         "required": "false",
-        "helpTip": "Connection to be used"
+        "helpTip": "Connection to be used",
+        "enableCondition": [
+          {
+            "payload": "Custom"
+          }
+        ]
       }
     },
     {
@@ -48,11 +68,11 @@
       "type": "attribute",
       "value": {
         "name": "target",
-        "displayName": "Target",
+        "displayName": "Target Property",
         "inputType": "stringOrExpression",
-        "defaultValue": "",
-        "required": "false",
-        "helpTip": "Connection to be used"
+        "defaultValue": "sign",
+        "required": "true",
+        "helpTip": "Enter the property name. (default:'sign')"
       }
     }
   ]

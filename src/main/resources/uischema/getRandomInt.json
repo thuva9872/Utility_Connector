@@ -7,7 +7,7 @@
     {
       "type": "attribute",
       "value": {
-        "name": "origin",
+        "name": "lowerBound",
         "displayName": "Lower bound",
         "inputType": "string",
         "defaultValue": "",
@@ -18,7 +18,7 @@
     {
       "type": "attribute",
       "value": {
-        "name": "bound",
+        "name": "upperBound",
         "displayName": "Upper bound",
         "inputType": "string",
         "defaultValue": "",
@@ -29,12 +29,12 @@
     {
       "type": "attribute",
       "value": {
-        "name": "saveTo",
+        "name": "target",
         "displayName": "Target Property",
         "inputType": "stringOrExpression",
-        "defaultValue": "",
-        "required": "false",
-        "helpTip": "Enter the property name. (default:'date')"
+        "defaultValue": "random",
+        "required": "true",
+        "helpTip": "Enter the property name. (default:'random')"
       }
     }
   ]

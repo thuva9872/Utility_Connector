@@ -20,6 +20,16 @@
 
 package org.wso2.carbon.esb.connector.hmac;
 
-public class Verify {
+import org.apache.synapse.MessageContext;
+import org.wso2.carbon.connector.core.AbstractConnector;
+import org.wso2.carbon.connector.core.ConnectException;
 
+import javax.crypto.Mac;
+
+public class Verify extends AbstractConnector {
+
+    @Override
+    public void connect(MessageContext messageContext) throws ConnectException {
+
+    }
 }

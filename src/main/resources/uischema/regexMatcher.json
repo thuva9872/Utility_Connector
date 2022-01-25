@@ -29,12 +29,12 @@
     {
       "type": "attribute",
       "value": {
-        "name": "saveTo",
+        "name": "target",
         "displayName": "Target Property",
         "inputType": "string",
-        "defaultValue": "",
-        "required": "false",
-        "helpTip": "Connection to be used"
+        "defaultValue": "match",
+        "required": "true",
+        "helpTip": "Enter the property name. (default:'match')"
       }
     }
   ]

@@ -18,24 +18,12 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.string.utils;
+package org.wso2.carbon.esb.connector.hmac.utils.constants;
 
-import org.apache.commons.lang.StringUtils;
-
-public class CaseTransformer {
-
-    private CaseTransformer() {
-
-    }
-
-    public static String transformToLowerCase(String string) {
-        String transformedString = StringUtils.lowerCase(string);
-        return transformedString;
-    }
-
-    public static String transformToUpperCase(String string) {
-
-        String transformedString = StringUtils.upperCase(string);
-        return transformedString;
-    }
+public enum HMACAlgorithm {
+    HmacSHA1,
+    HmacSHA256,
+    HmacSHA384,
+    HmacSHA512,
+    HmacMD5
 }

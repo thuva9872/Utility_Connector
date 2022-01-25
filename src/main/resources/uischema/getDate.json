@@ -18,11 +18,11 @@
     {
       "type": "attribute",
       "value": {
-        "name": "saveTo",
+        "name": "target",
         "displayName": "Target Property",
         "inputType": "stringOrExpression",
-        "defaultValue": "",
-        "required": "false",
+        "defaultValue": "date",
+        "required": "true",
         "helpTip": "Enter the property name. (default:'date')"
       }
     }

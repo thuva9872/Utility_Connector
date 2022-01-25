@@ -25,18 +25,61 @@ import org.apache.synapse.MessageContext;
 import org.apache.synapse.commons.json.JsonUtil;
 import org.apache.synapse.core.axis2.Axis2MessageContext;
 import org.apache.synapse.util.PayloadHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.snmp4j.log.Log4jLogFactory;
+import org.wso2.carbon.esb.connector.utils.constants.MIMETypes;
+import org.wso2.carbon.esb.connector.utils.exception.NoSuchContentTypeException;
+import org.wso2.carbon.esb.connector.utils.exception.PayloadNotFoundException;
 
 public class PayloadReader {
 
-    public static String getTextPayload(MessageContext messageContext) {
+    private static final String payloadTypePropertyName = "messageType";
 
-        return PayloadHelper.getTextPayload(messageContext);
+    public static String getPayload(MessageContext messageContext) throws NoSuchContentTypeException,
+            PayloadNotFoundException {
+
+        org.apache.axis2.context.MessageContext axis2mc =
+                ((Axis2MessageContext) messageContext).getAxis2MessageContext();
+        String payloadType = (String) axis2mc.getProperty(payloadTypePropertyName);
+        switch (payloadType) {
+            case MIMETypes.application_json:
+                return PayloadReader.getJSONPayload(messageContext);
+            case MIMETypes.application_xml:
+                return PayloadReader.getXMLPayload(messageContext);
+            case MIMETypes.text_plain:
+                return PayloadReader.getTextPayload(messageContext);
+            default:
+                throw new NoSuchContentTypeException("The content type " + payloadType + " is not defined.");
+        }
     }
 
-    public static String getXMLPayload(MessageContext messageContext) {
+    public static String getTextPayload(MessageContext messageContext) throws PayloadNotFoundException {
 
-        OMElement el = PayloadHelper.getXMLPayload(messageContext.getEnvelope());
-        return el.toString();
+        if (messageContext.getEnvelope().getBody() == null || messageContext.getEnvelope().getBody().getFirstElement() == null) {
+            throw new PayloadNotFoundException();
+        } else {
+            String payload =messageContext.getEnvelope().getBody().getFirstElement().getText();
+            if(payload==null){
+                throw new PayloadNotFoundException();
+            }
+            else {
+                return payload;
+            }
+        }
+    }
+
+    public static String getXMLPayload(MessageContext messageContext) throws PayloadNotFoundException {
+
+        if (messageContext.getEnvelope().getBody() == null ) {
+            throw new PayloadNotFoundException();
+        } else if(messageContext.getEnvelope().getBody().getFirstElement() == null){
+            return "";
+        }
+        else {
+            OMElement el = PayloadHelper.getXMLPayload(messageContext.getEnvelope());
+            return el.toString();
+        }
     }
 
     public static String getJSONPayload(MessageContext messageContext) {

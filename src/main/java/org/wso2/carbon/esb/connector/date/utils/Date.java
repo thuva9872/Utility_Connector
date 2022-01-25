@@ -18,11 +18,22 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.hmac.utils.constants;
+package org.wso2.carbon.esb.connector.date.utils;
 
-public class MIMETypes {
+import java.text.Format;
+import java.text.SimpleDateFormat;
 
-    public static final String application_json = "application/json";
-    public static final String application_xml = "application/xml";
-    public static final String text_plain = "text/plain";
+public class Date {
+
+    public static String getDate(String dateFormat) {
+
+        Format formatter = null;
+        try {
+            formatter = new SimpleDateFormat(dateFormat);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Illegal date format",e);
+        }
+        String date = formatter.format(new java.util.Date());
+        return date;
+    }
 }
