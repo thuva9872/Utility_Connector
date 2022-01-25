@@ -24,5 +24,9 @@
             <file>sign.xml</file>
             <description>Wso2 connector method</description>
         </component>
+        <component name="hmac.Verify">
+            <file>verify.xml</file>
+            <description>Wso2 connector method</description>
+        </component>
     </subComponents>
 </component>
