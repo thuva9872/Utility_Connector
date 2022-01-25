@@ -18,15 +18,15 @@
   ~  */
   -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="math.GetRandomInt">
-    <parameter name="origin"/>
-    <parameter name="bound"/>
-    <parameter name="saveTo"/>
+    <parameter name="lowerBound"/>
+    <parameter name="upperBound"/>
+    <parameter name="target"/>
 
     <sequence>
         <log level="full">
-            <property name="origin" expression="$func:origin"/>
-            <property name="bound" expression="$func:bound"/>
-            <property name="saveTo" expression="$func:saveTo"/>
+            <property name="origin" expression="$func:lowerBound"/>
+            <property name="bound" expression="$func:upperBound"/>
+            <property name="saveTo" expression="$func:target"/>
         </log>
         <class name="org.wso2.carbon.esb.connector.math.GetRandomNumber"/>
     </sequence>

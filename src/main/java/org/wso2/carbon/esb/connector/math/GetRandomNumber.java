@@ -40,7 +40,6 @@ public class GetRandomNumber extends AbstractConnector {
         Optional<Integer> boundOptional = getIntProperty(messageContext, "bound");
         Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "saveTo");
         String saveTo = saveToPropertyOptional.orElse(Constant.saveToProperty);
-        log.info("read" + originOptional + " " + boundOptional);
         int origin = originOptional.orElse(Constant.intMin);
         int bound = boundOptional.orElse(Constant.intMax);
         int randomNumber = 0;

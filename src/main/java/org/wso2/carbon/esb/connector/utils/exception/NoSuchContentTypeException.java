@@ -18,12 +18,17 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.hmac.utils.constants;
+package org.wso2.carbon.esb.connector.utils.exception;
 
-public class Constant {
+public class NoSuchContentTypeException extends Exception {
 
-    public static final String saveSignResultTo = "sign";
-    public static final String saveVerifyResultTo = "verify";
-    public static final String defaultAlgorithm = "HmacSHA1";
-    public static final String payloadFromDefault="Body";
+    public NoSuchContentTypeException(String message) {
+
+        super(message);
+    }
+
+    public NoSuchContentTypeException(String message, Throwable cause) {
+
+        super(message, cause);
+    }
 }

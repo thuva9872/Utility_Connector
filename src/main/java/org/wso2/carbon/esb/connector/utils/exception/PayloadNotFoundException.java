@@ -18,16 +18,18 @@
  *
  */
 
-package org.wso2.carbon.esb.connector.hmac.utils.exceptions;
+package org.wso2.carbon.esb.connector.utils.exception;
 
-public class NoSuchContentTypeException extends Exception {
-
-    public NoSuchContentTypeException(String message) {
+public class PayloadNotFoundException extends Exception {
+    public PayloadNotFoundException(){
+        super();
+    }
+    public PayloadNotFoundException(String message) {
 
         super(message);
     }
 
-    public NoSuchContentTypeException(String message, Throwable cause) {
+    public PayloadNotFoundException(String message, Throwable cause) {
 
         super(message, cause);
     }

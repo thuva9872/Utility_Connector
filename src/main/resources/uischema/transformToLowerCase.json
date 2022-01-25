@@ -18,7 +18,7 @@
     {
       "type": "attribute",
       "value": {
-        "name": "saveTo",
+        "name": "target",
         "displayName": "Target Property",
         "inputType": "string",
         "defaultValue": "lower",
