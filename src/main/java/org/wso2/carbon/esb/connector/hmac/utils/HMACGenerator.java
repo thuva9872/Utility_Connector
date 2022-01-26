@@ -36,9 +36,9 @@ public class HMACGenerator {
 
     }
 
-    private static Map<String, Mac> macInstancesMap = new ConcurrentHashMap<>();
+    private static final Map<String, Mac> macInstancesMap = new ConcurrentHashMap<>();
 
-    public static String generateSignature(String payload, String secret, String algorithm) throws NoSuchAlgorithmException, InvalidKeyException, NullPointerException {
+    public static String generateSignature(String payload, String secret, String algorithm) throws NoSuchAlgorithmException, InvalidKeyException {
 
         try {
             Mac mac = getMacInstance(algorithm);

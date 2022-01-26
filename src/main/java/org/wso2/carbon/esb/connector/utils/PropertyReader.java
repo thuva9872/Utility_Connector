@@ -61,18 +61,19 @@ public class PropertyReader {
         });
     }
 
-    public static Optional<String> getEnumProperty(MessageContext mc, String parameterKey, Class<Enum> enumType) throws InvalidParameterValueException {
+    public static <E extends Enum<E>> E getEnumProperty(MessageContext mc, String parameterKey, Class<E> enumType,
+                                                        E defaultValue) throws InvalidParameterValueException {
 
         Optional<String> property = getStringProperty(mc, parameterKey);
         if (property.isPresent()) {
             try {
-                Optional<String> result = Optional.of(Enum.valueOf(enumType, property.get()).toString());
-                return result;
-            } catch (Exception e) {
-                throw new InvalidParameterValueException("Invalid Parameter Value: ", e);
+                return Enum.valueOf(enumType, property.get());
+            } catch (IllegalArgumentException | NullPointerException e) {
+                throw new InvalidParameterValueException(String.format("Invalid Parameter Value %s=%s", parameterKey,
+                        property.get()), e);
             }
         } else {
-            return Optional.empty();
+            return defaultValue;
         }
     }
 }

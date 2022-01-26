@@ -28,23 +28,12 @@ public class RandomNumberGenerator {
 
     }
 
-    //generate random integer
-    public static int generateRandomInteger() {
-
-        return ThreadLocalRandom.current().nextInt();
-    }
-
-    public static int generateRandomInteger(int bound) {
-
-        return ThreadLocalRandom.current().nextInt(bound);
-    }
-
     public static int generateRandomInteger(int origin, int bound) {
-        try{
+
+        try {
             return ThreadLocalRandom.current().nextInt(origin, bound);
-        }
-        catch (IllegalArgumentException e){
-            throw new IllegalArgumentException("Lower bound > Upper bound",e);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Lower bound > Upper bound", e);
         }
     }
 }

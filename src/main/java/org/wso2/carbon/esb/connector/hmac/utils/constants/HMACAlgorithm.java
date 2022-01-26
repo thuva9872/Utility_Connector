@@ -21,9 +21,5 @@
 package org.wso2.carbon.esb.connector.hmac.utils.constants;
 
 public enum HMACAlgorithm {
-    HmacSHA1,
-    HmacSHA256,
-    HmacSHA384,
-    HmacSHA512,
-    HmacMD5
+    HMACSHA1, HMACSHA256, HMACSHA384, HMACSHA512, HMACMD5
 }

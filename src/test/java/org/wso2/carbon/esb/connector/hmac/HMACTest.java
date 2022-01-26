@@ -47,23 +47,27 @@ public class HMACTest {
 
     @Test
     void test_hmacGenerator_invalidAlgorithm_throwsNoSuchAlgorithmException() {
+
         String payload = "abc";
         String secret = "123";
         String algorithm = "Hmacsha";
-        Exception exception =Assertions.assertThrows(NoSuchAlgorithmException.class,()->HMACGenerator.generateSignature(payload, secret, algorithm));
-        String expectedMessage="Invalid algorithm";
+        Exception exception = Assertions.assertThrows(NoSuchAlgorithmException.class,
+                () -> HMACGenerator.generateSignature(payload, secret, algorithm));
+        String expectedMessage = "Invalid algorithm";
 
-        Assertions.assertEquals(expectedMessage,exception.getMessage());
+        Assertions.assertEquals(expectedMessage, exception.getMessage());
     }
 
     @Test
-    void test_hmacGenerator_nullSecret_throwsNullPointerException(){
+    void test_hmacGenerator_nullSecret_throwsNullPointerException() {
+
         String payload = "abc";
         String secret = null;
         String algorithm = "Hmacsha1";
-        Exception exception =Assertions.assertThrows(NullPointerException.class,()->HMACGenerator.generateSignature(payload, secret, algorithm));
-        String expectedMessage="Invalid secret";
+        Exception exception = Assertions.assertThrows(NullPointerException.class,
+                () -> HMACGenerator.generateSignature(payload, secret, algorithm));
+        String expectedMessage = "Invalid secret";
 
-        Assertions.assertEquals(expectedMessage,exception.getMessage());
+        Assertions.assertEquals(expectedMessage, exception.getMessage());
     }
 }

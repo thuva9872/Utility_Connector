@@ -26,31 +26,30 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.wso2.carbon.esb.connector.string.utils.CaseTransformer;
 
-import java.util.Locale;
-
 @ExtendWith(MockitoExtension.class)
 public class CaseTransformerTest {
 
     @Test
-    void test_transformToUpperCase_returnsUpperCaseString(){
-        String input="qwerty123@$";
-        String transformed= CaseTransformer.transformToUpperCase(input);
-        Assertions.assertEquals(transformed,input.toUpperCase());
+    void test_transformToUpperCase_returnsUpperCaseString() {
 
-        input="qWeRtY[]{}$@";
-        transformed= CaseTransformer.transformToUpperCase(input);
-        Assertions.assertEquals(transformed,input.toUpperCase());
+        String input = "qwerty123@$";
+        String transformed = CaseTransformer.transformToUpperCase(input);
+        Assertions.assertEquals(transformed, input.toUpperCase());
 
+        input = "qWeRtY[]{}$@";
+        transformed = CaseTransformer.transformToUpperCase(input);
+        Assertions.assertEquals(transformed, input.toUpperCase());
     }
 
     @Test
-    void test_transformToLowerCase_returnsLowerCaseString(){
-        String input="QWERTY123@$";
-        String transformed= CaseTransformer.transformToLowerCase(input);
-        Assertions.assertEquals(transformed,input.toLowerCase());
+    void test_transformToLowerCase_returnsLowerCaseString() {
 
-        input="qWeRtY[]{}$@";
-        transformed= CaseTransformer.transformToLowerCase(input);
-        Assertions.assertEquals(transformed,input.toLowerCase());
+        String input = "QWERTY123@$";
+        String transformed = CaseTransformer.transformToLowerCase(input);
+        Assertions.assertEquals(transformed, input.toLowerCase());
+
+        input = "qWeRtY[]{}$@";
+        transformed = CaseTransformer.transformToLowerCase(input);
+        Assertions.assertEquals(transformed, input.toLowerCase());
     }
 }

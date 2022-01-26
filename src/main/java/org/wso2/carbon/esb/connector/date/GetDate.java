@@ -26,8 +26,6 @@ import org.wso2.carbon.connector.core.ConnectException;
 import org.wso2.carbon.esb.connector.date.utils.Date;
 import org.wso2.carbon.esb.connector.date.utils.constants.Constant;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 import static org.wso2.carbon.esb.connector.utils.PropertyReader.getStringProperty;

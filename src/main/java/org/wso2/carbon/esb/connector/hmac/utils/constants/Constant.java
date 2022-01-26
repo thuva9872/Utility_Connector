@@ -24,6 +24,5 @@ public class Constant {
 
     public static final String saveSignResultTo = "sign";
     public static final String saveVerifyResultTo = "verify";
-    public static final String defaultAlgorithm = "HmacSHA1";
-    public static final String payloadFromDefault="Body";
+    public static final String payloadFromDefault = "Body";
 }

@@ -37,12 +37,9 @@ public class Length extends AbstractConnector {
 
         Optional<String> stringOptional = getStringProperty(messageContext, "string");
         Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "target");
-
         String string = stringOptional.orElse("");
         String saveTo = saveToPropertyOptional.orElse(Constant.SaveToPropertyLength);
-
         int length = StringUtils.length(string);
-
         messageContext.setProperty(saveTo, length);
     }
 }

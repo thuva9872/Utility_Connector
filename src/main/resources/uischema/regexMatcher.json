@@ -19,7 +19,7 @@
       "type": "attribute",
       "value": {
         "name": "regex",
-        "displayName": "Regular String",
+        "displayName": "Regular Expression",
         "inputType": "string",
         "defaultValue": "",
         "required": "true",

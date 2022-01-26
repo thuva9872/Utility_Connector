@@ -39,11 +39,9 @@ public class RegexMatcher extends AbstractConnector {
         Optional<String> inputOptional = getStringProperty(messageContext, "string");
         Optional<String> regexOptional = getStringProperty(messageContext, "regex");
         Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "target");
-
         String input = inputOptional.orElse("");
         String regex = regexOptional.orElse("");
         String saveToProperty = saveToPropertyOptional.orElse(Constant.saveToPropertyRegexMatcher);
-
         try {
             Boolean matching = matches(regex, input);
             messageContext.setProperty(saveToProperty, matching.toString());
@@ -52,9 +50,9 @@ public class RegexMatcher extends AbstractConnector {
         }
     }
 
-    private Boolean matches(String regex,String input){
-        Boolean matching = Pattern.matches(regex, input);
-        return matching;
+    private Boolean matches(String regex, String input) {
+
+        return Pattern.matches(regex, input);
     }
 }
 
