@@ -21,7 +21,9 @@
 package org.wso2.carbon.esb.connector.utils.exception;
 
 public class PayloadNotFoundException extends Exception {
-    public PayloadNotFoundException(){
+
+    public PayloadNotFoundException() {
+
         super();
     }
 }

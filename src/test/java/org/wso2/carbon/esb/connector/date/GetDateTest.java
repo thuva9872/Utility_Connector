@@ -34,24 +34,24 @@ import java.text.SimpleDateFormat;
 class GetDateTest {
 
 
-
     @Test
-    void test_getDate_legalDateFormat()  {
+    void test_getDate_legalDateFormat() {
 
-        String actualDate=Date.getDate("yyyy/MM/dd HH:mm:ss");
+        String actualDate = Date.getDate("yyyy/MM/dd HH:mm:ss");
         Format formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         final String expectedDate = formatter.format(new java.util.Date());
-        Assertions.assertEquals(actualDate,expectedDate);
+        Assertions.assertEquals(actualDate, expectedDate);
     }
 
     @Test
-    void test_getDate_illegalDateFormat(){
+    void test_getDate_illegalDateFormat() {
 
-        Exception exception= Assertions.assertThrows(IllegalArgumentException.class,()->Date.getDate("aff/dsf/asf"));
-        String expectedMessage="Illegal date format";
-        Assertions.assertEquals(expectedMessage,exception.getMessage());
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> Date.getDate("aff/dsf/asf"
+        ));
+        String expectedMessage = "Illegal date format";
+        Assertions.assertEquals(expectedMessage, exception.getMessage());
 
-        exception= Assertions.assertThrows(IllegalArgumentException.class,()->Date.getDate("x@#"));
-        Assertions.assertEquals(expectedMessage,exception.getMessage());
+        exception = Assertions.assertThrows(IllegalArgumentException.class, () -> Date.getDate("x@#"));
+        Assertions.assertEquals(expectedMessage, exception.getMessage());
     }
 }

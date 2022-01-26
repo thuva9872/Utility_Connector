@@ -29,11 +29,11 @@ public class RandomNumberGenerator {
     }
 
     public static int generateRandomInteger(int origin, int bound) {
-        try{
+
+        try {
             return ThreadLocalRandom.current().nextInt(origin, bound);
-        }
-        catch (IllegalArgumentException e){
-            throw new IllegalArgumentException("Lower bound > Upper bound",e);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Lower bound > Upper bound", e);
         }
     }
 }

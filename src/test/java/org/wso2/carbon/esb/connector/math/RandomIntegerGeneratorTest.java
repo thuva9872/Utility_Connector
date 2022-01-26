@@ -33,7 +33,7 @@ public class RandomIntegerGeneratorTest {
     @Test
     void test_RandomNumberGenerator_ValidOriginBound_randomNumberGeneratedInCorrectRange() {
 
-        int origin =0;
+        int origin = 0;
         int bound = 5;
         int rand = RandomNumberGenerator.generateRandomInteger(origin, bound);
         IntRange range = new IntRange(origin, bound);

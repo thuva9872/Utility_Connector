@@ -37,12 +37,9 @@ public class TransformToLowerCase extends AbstractConnector {
 
         Optional<String> stringOptional = getStringProperty(messageContext, "string");
         Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "target");
-
         String string = stringOptional.orElse("");
         String saveToProperty = saveToPropertyOptional.orElse(Constant.saveToPropertyCaseChanger);
-
         String transformedString = transformToLowerCase(string);
-
         messageContext.setProperty(saveToProperty, transformedString);
     }
 }

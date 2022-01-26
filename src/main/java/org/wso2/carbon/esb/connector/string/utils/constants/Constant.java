@@ -20,8 +20,6 @@
 
 package org.wso2.carbon.esb.connector.string.utils.constants;
 
-import java.util.Locale;
-
 public class Constant {
 
     public static final String saveToPropertyCaseChanger = "result";

@@ -13,7 +13,7 @@
         "defaultValue": "Body",
         "required": "false",
         "comboValues": [
-         "Body",
+          "Body",
           "Custom"
         ],
         "helpTip": ""
@@ -34,7 +34,8 @@
           }
         ]
       }
-    },{
+    },
+    {
       "type": "attribute",
       "value": {
         "name": "signature",
