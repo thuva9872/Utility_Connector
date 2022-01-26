@@ -66,8 +66,7 @@ public class PropertyReader {
         Optional<String> property = getStringProperty(mc, parameterKey);
         if (property.isPresent()) {
             try {
-                Optional<String> result = Optional.of(Enum.valueOf(enumType, property.get()).toString());
-                return result;
+                return Optional.of(Enum.valueOf(enumType, property.get()).toString());
             } catch (Exception e) {
                 throw new InvalidParameterValueException("Invalid Parameter Value: ", e);
             }

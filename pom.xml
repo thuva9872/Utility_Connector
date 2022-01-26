@@ -34,22 +34,14 @@
         <integration.base.version>1.0.6</integration.base.version>
         <product.ei.version>6.5.0</product.ei.version>
         <carbon.kernel.version>4.4.37</carbon.kernel.version>
-        <automation.framework.utils.version>4.5.4</automation.framework.utils.version>
-        <automation.framework.version>4.4.10</automation.framework.version>
-        <emma.version>2.1.5320</emma.version>
-        <synapse.version>3.0.1</synapse.version>
-        <carbon.mediation.version>4.7.106</carbon.mediation.version>
-        <json.version>2.0.0.wso2v1</json.version>
-        <org.testng.version>7.4.0</org.testng.version>
-        <jets3t.version>0.9.4</jets3t.version>
-        <bouncycastle.version>1.55</bouncycastle.version>
-        <rampart.apache.version>1.6.1-wso2v18</rampart.apache.version>
-        <rampart.wso2.version>1.6.1.wso2v18</rampart.wso2.version>
+        <synapse.version>2.1.7-wso2v247-SNAPSHOT</synapse.version>
+        <carbon.mediation.version>4.7.109</carbon.mediation.version>
+        <mockito.verion>4.2.0</mockito.verion>
+        <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <skip-tests>true</skip-tests>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-core</artifactId>
@@ -60,181 +52,23 @@
             <artifactId>synapse-commons</artifactId>
             <version>${synapse.version}</version>
         </dependency>
-        <!--                <dependency>-->
-        <!--                    <groupId>org.json.wso2</groupId>-->
-        <!--                    <artifactId>json</artifactId>-->
-        <!--                    <version>${json.version}</version>-->
-        <!--                </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon.automation</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.automation.engine</artifactId>-->
-        <!--            <version>${automation.framework.version}</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon.automation</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.automation.extensions</artifactId>-->
-        <!--            <version>${automation.framework.version}</version>-->
-        <!--            <exclusions>-->
-        <!--                <exclusion>-->
-        <!--                    <groupId>org.apache.jmeter</groupId>-->
-        <!--                    <artifactId>ApacheJMeter</artifactId>-->
-        <!--                </exclusion>-->
-        <!--                <exclusion>-->
-        <!--                    <groupId>org.apache.jmeter</groupId>-->
-        <!--                    <artifactId>ApacheJMeter_core</artifactId>-->
-        <!--                </exclusion>-->
-        <!--            </exclusions>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon.automationutils</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.integration.common.admin.client</artifactId>-->
-        <!--            <version>${automation.framework.utils.version}</version>-->
-        <!--            <scope>compile</scope>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon.automationutils</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.integration.common.extensions</artifactId>-->
-        <!--            <version>${automation.framework.utils.version}</version>-->
-        <!--            <scope>compile</scope>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon.automationutils</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.integration.common.utils</artifactId>-->
-        <!--            <version>${automation.framework.utils.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon.automationutils</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.integration.common.tests</artifactId>-->
-        <!--            <version>${automation.framework.utils.version}</version>-->
-        <!--            &lt;!&ndash;<scope>compile</scope>&ndash;&gt;-->
-        <!--        </dependency>-->
-
         <dependency>
             <groupId>org.wso2.carbon.mediation</groupId>
             <artifactId>org.wso2.carbon.connector.core</artifactId>
             <version>${carbon.mediation.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon.mediation</groupId>
-            <artifactId>org.wso2.carbon.mediation.library.stub</artifactId>
-            <version>${carbon.mediation.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>servlet-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>emma</groupId>-->
-        <!--            <artifactId>emma</artifactId>-->
-        <!--            <version>${emma.version}</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.testng</groupId>-->
-        <!--            <artifactId>testng</artifactId>-->
-        <!--            <version>${org.testng.version}</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon</groupId>-->
-        <!--            <artifactId>SecVerifier</artifactId>-->
-        <!--            <version>${carbon.kernel.version}</version>-->
-        <!--            <type>aar</type>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-        <!--Dependency for Integration Tests-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon.automation</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.automation.test.utils</artifactId>-->
-        <!--            <version>${automation.framework.version}</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.carbon</groupId>-->
-        <!--            <artifactId>org.wso2.carbon.logging</artifactId>-->
-        <!--            <version>${carbon.kernel.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.httpcomponents</groupId>-->
-        <!--            <artifactId>httpmime</artifactId>-->
-        <!--            <version>4.5.13</version>-->
-        <!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.json</groupId>-->
-<!--            <artifactId>json</artifactId>-->
-<!--            <version>20080701</version>-->
-<!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.ei</groupId>-->
-        <!--            <artifactId>org.wso2.ei.samples</artifactId>-->
-        <!--            <version>${product.ei.version}</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.ei</groupId>-->
-        <!--            <artifactId>integration-test-utils</artifactId>-->
-        <!--            <version>${product.ei.version}</version>-->
-        <!--            <scope>test</scope>-->
-        <!--            <exclusions>-->
-        <!--                <exclusion>-->
-        <!--                    <groupId>org.slf4j</groupId>-->
-        <!--                    <artifactId>slf4j-log4j12</artifactId>-->
-        <!--                </exclusion>-->
-        <!--            </exclusions>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.ei</groupId>-->
-        <!--            <artifactId>automation-extensions</artifactId>-->
-        <!--            <version>${product.ei.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.wso2.esb.integration</groupId>-->
-        <!--            <artifactId>integration-base</artifactId>-->
-        <!--            <version>${integration.base.version}</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.6.2</version>
+            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>3.2.4</version>
+            <version>${mockito.verion}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>4.2.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-inline</artifactId>
-            <version>3.8.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.synapse</groupId>
-            <artifactId>synapse-commons</artifactId>
-            <version>2.1.7-wso3v61-SNAPSHOT</version>
-        </dependency>
-        <!--        <dependency>-->
-<!--            <groupId>org.apache.synapse</groupId>-->
-<!--            <artifactId>synapse-commons</artifactId>-->
-<!--            <version>2.1.7-wso2v244-SNAPSHOT</version>-->
-<!--        </dependency>-->
-
     </dependencies>
     <build>
         <plugins>

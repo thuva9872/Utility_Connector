@@ -31,13 +31,12 @@ public class Date {
 
     public static String getDate(String dateFormat) {
 
-        Format formatter = null;
+        Format formatter;
         try {
             formatter = new SimpleDateFormat(dateFormat);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Illegal date format", e);
         }
-        String date = formatter.format(new java.util.Date());
-        return date;
+        return formatter.format(new java.util.Date());
     }
 }
