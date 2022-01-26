@@ -10,9 +10,9 @@
         "name": "target",
         "displayName": "Target Property",
         "inputType": "string",
-        "defaultValue": "random",
+        "defaultValue": "uuid",
         "required": "true",
-        "helpTip": "Enter the property name. (default:'random')"
+        "helpTip": "Enter the property name. (default:'uuid')"
       }
     }
   ]

@@ -36,7 +36,7 @@ public class Length extends AbstractConnector {
     public void connect(MessageContext messageContext) throws ConnectException {
 
         Optional<String> stringOptional = getStringProperty(messageContext, "string");
-        Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "saveTo");
+        Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "target");
 
         String string = stringOptional.orElse("");
         String saveTo = saveToPropertyOptional.orElse(Constant.SaveToPropertyLength);

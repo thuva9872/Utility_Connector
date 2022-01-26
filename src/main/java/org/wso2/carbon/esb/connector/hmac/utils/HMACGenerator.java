@@ -20,6 +20,8 @@
 
 package org.wso2.carbon.esb.connector.hmac.utils;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
@@ -30,23 +32,26 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class HMACGenerator {
 
+    private HMACGenerator() {
+
+    }
+
     private static Map<String, Mac> macInstancesMap = new ConcurrentHashMap<>();
 
-    public static String generateSignature(String payload, String secret, String algorithm) throws NoSuchAlgorithmException, InvalidKeyException {
+    public static String generateSignature(String payload, String secret, String algorithm) throws NoSuchAlgorithmException, InvalidKeyException, NullPointerException {
 
         try {
             Mac mac = getMacInstance(algorithm);
+            if (StringUtils.isBlank(secret) || StringUtils.isEmpty(secret)) {
+                throw new NullPointerException();
+            }
             final SecretKeySpec signingKey = new SecretKeySpec(secret.getBytes(), algorithm);
             mac.init(signingKey);
             return toHexString(mac.doFinal(payload.getBytes()));
         } catch (NoSuchAlgorithmException e) {
-            throw new NoSuchAlgorithmException("Invalid algorithm",e);
-        }
-        catch (InvalidKeyException e) {
-            throw new InvalidKeyException("Invalid signingKey",e);
-        }
-        catch (NullPointerException e){
-            throw new NullPointerException("Invalid secret");
+            throw new NoSuchAlgorithmException("Invalid algorithm", e);
+        } catch (InvalidKeyException e) {
+            throw new InvalidKeyException(e);
         }
     }
 

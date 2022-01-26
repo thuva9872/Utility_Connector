@@ -47,7 +47,7 @@ public class Verify extends AbstractConnector {
         Optional<String> customSignatureOptional = PropertyReader.getStringProperty(messageContext, "signature");
         Optional<String> algorithmOptional = PropertyReader.getStringProperty(messageContext, "algorithm");
         Optional<String> secretOptional = PropertyReader.getStringProperty(messageContext, "secret");
-        Optional<String> saveToPropertyOptional = PropertyReader.getStringProperty(messageContext, "saveTo");
+        Optional<String> saveToPropertyOptional = PropertyReader.getStringProperty(messageContext, "target");
 
         String payload = null;
         if (payloadFromOptional.isPresent() && StringUtils.equalsIgnoreCase(payloadFromOptional.get(),
@@ -70,12 +70,13 @@ public class Verify extends AbstractConnector {
         boolean verifyResult = false;
         try {
             verifyResult = HMACVerify.verify(payload, secret, algorithm, customSignature);
+            messageContext.setProperty(saveToProperty, verifyResult);
         } catch (NoSuchAlgorithmException e) {
             log.error("Invalid Algorithm: ", e);
         } catch (InvalidKeyException e) {
             log.error(e);
+        } catch (NullPointerException e) {
+            log.error("Secret is not provided",e);
         }
-
-        messageContext.setProperty(saveToProperty, verifyResult);
     }
 }
