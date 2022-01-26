@@ -73,7 +73,7 @@ public class PropertyReader {
      *
      * @param mc           SimpleMessageContext.
      * @param parameterKey Key of the parameter.
-     * @return Optional String of the parameter value.
+     * @return Enum of the parameter value.
      */
     public static <E extends Enum<E>> E getEnumProperty(MessageContext mc, String parameterKey, Class<E> enumType,
                                                         E defaultValue) throws InvalidParameterValueException {
