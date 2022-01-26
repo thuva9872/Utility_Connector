@@ -35,11 +35,11 @@ public class GetDate extends AbstractConnector {
     @Override
     public void connect(MessageContext messageContext) throws ConnectException {
 
+        //reading properties from message context
         Optional<String> dateFormatOptional = getStringProperty(messageContext, "format");
         Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "target");
         String dateFormat = dateFormatOptional.orElse(Constant.dateFormat);
         String saveToProperty = saveToPropertyOptional.orElse(Constant.saveToProperty);
-
         try {
             String date = Date.getDate(dateFormat);
             messageContext.setProperty(saveToProperty, date);

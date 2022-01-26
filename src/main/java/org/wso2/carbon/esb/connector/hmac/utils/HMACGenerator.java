@@ -54,7 +54,7 @@ public class HMACGenerator {
             throw new InvalidKeyException(e);
         }
     }
-
+    //Convert the byte array to string
     private static String toHexString(byte[] bytes) {
 
         Formatter formatter = new Formatter();
@@ -64,6 +64,7 @@ public class HMACGenerator {
         return formatter.toString();
     }
 
+    //Returns a MAC instance for the given algorithm
     private static Mac getMacInstance(String algorithm) throws NoSuchAlgorithmException {
 
         Mac macInstance = macInstancesMap.get(algorithm);

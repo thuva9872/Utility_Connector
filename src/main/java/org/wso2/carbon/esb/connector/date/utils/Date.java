@@ -28,7 +28,7 @@ public class Date {
     private Date() {
 
     }
-
+    //Returns the current date.
     public static String getDate(String dateFormat) {
 
         Format formatter;

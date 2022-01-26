@@ -33,13 +33,7 @@ public class PropertyReader {
 
     }
 
-    /**
-     * Read a String parameter
-     *
-     * @param mc           SimpleMessageContext.
-     * @param parameterKey Key of the parameter.
-     * @return Optional String of the parameter value.
-     */
+   //read the string property from the message context
     public static Optional<String> getStringProperty(MessageContext mc, String parameterKey) {
 
         String parameter = (String) ConnectorUtils.lookupTemplateParamater(mc, parameterKey);
@@ -49,6 +43,7 @@ public class PropertyReader {
         return Optional.empty();
     }
 
+    //read the integer property from the message context
     public static Optional<Integer> getIntProperty(MessageContext mc, String parameterKey) {
 
         Optional<String> parameter = getStringProperty(mc, parameterKey);
@@ -60,7 +55,7 @@ public class PropertyReader {
             }
         });
     }
-
+    //read the enum property from the message context
     public static <E extends Enum<E>> E getEnumProperty(MessageContext mc, String parameterKey, Class<E> enumType,
                                                         E defaultValue) throws InvalidParameterValueException {
 

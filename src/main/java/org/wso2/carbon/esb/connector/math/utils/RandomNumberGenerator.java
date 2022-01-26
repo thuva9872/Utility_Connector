@@ -27,7 +27,7 @@ public class RandomNumberGenerator {
     private RandomNumberGenerator() {
 
     }
-
+    //Generate a random integer in the range of [origin,bound]
     public static int generateRandomInteger(int origin, int bound) {
 
         try {

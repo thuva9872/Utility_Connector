@@ -41,13 +41,14 @@ public class Verify extends AbstractConnector {
 
     @Override
     public void connect(MessageContext messageContext) throws ConnectException {
-
+        //Reading properties from message context
         Optional<String> payloadFromOptional = PropertyReader.getStringProperty(messageContext, "payload");
         Optional<String> customPayloadOptional = PropertyReader.getStringProperty(messageContext, "customPayload");
         Optional<String> customSignatureOptional = PropertyReader.getStringProperty(messageContext, "signature");
         Optional<String> secretOptional = PropertyReader.getStringProperty(messageContext, "secret");
         Optional<String> saveToPropertyOptional = PropertyReader.getStringProperty(messageContext, "target");
         String payload = null;
+        //Reading payload from body or property
         if (payloadFromOptional.isPresent() && StringUtils.equalsIgnoreCase(payloadFromOptional.get(),
                 Constant.payloadFromDefault)) {
             try {
@@ -68,6 +69,7 @@ public class Verify extends AbstractConnector {
                     , HMACAlgorithm.HMACSHA1);
             boolean verifyResult;
             try {
+                //Verify the payload using the signature
                 verifyResult = HMACVerify.verify(payload, secret, algorithm.toString(), customSignature);
                 messageContext.setProperty(saveToProperty, verifyResult);
             } catch (NoSuchAlgorithmException e) {
