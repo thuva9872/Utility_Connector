@@ -32,7 +32,7 @@
             <property name="customSignature" expression="$func:signature"/>
             <property name="secret" expression="$func:secret"/>
             <property name="algorithm" expression="$func:algorithm"/>
-            <property name="saveTo" expression="$func:target"/>
+            <property name="target" expression="$func:target"/>
         </log>
         <class name="org.wso2.carbon.esb.connector.hmac.Verify"/>
     </sequence>

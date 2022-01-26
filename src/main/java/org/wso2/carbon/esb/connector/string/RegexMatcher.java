@@ -38,7 +38,7 @@ public class RegexMatcher extends AbstractConnector {
 
         Optional<String> inputOptional = getStringProperty(messageContext, "string");
         Optional<String> regexOptional = getStringProperty(messageContext, "regex");
-        Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "saveTo");
+        Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "target");
 
         String input = inputOptional.orElse("");
         String regex = regexOptional.orElse("");

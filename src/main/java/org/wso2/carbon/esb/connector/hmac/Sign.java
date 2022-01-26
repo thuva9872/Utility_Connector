@@ -43,7 +43,7 @@ public class Sign extends AbstractConnector {
         Optional<String> customPayloadOptional = PropertyReader.getStringProperty(messageContext, "customPayload");
         Optional<String> algorithmOptional = PropertyReader.getStringProperty(messageContext, "algorithm");
         Optional<String> secretOptional = PropertyReader.getStringProperty(messageContext, "secret");
-        Optional<String> saveToPropertyOptional = PropertyReader.getStringProperty(messageContext, "saveTo");
+        Optional<String> saveToPropertyOptional = PropertyReader.getStringProperty(messageContext, "target");
 
         String payload = null;
         if (payloadFromOptional.isPresent() && StringUtils.equalsIgnoreCase(payloadFromOptional.get(),Constant.payloadFromDefault)){
@@ -62,7 +62,6 @@ public class Sign extends AbstractConnector {
         String algorithm = algorithmOptional.orElse(Constant.defaultAlgorithm);
         String secret = secretOptional.orElse("");
         String saveToProperty = saveToPropertyOptional.orElse(Constant.saveSignResultTo);
-
         try {
             String sign = HMACGenerator.generateSignature(payload, secret, algorithm);
             messageContext.setProperty(saveToProperty, sign);
@@ -71,5 +70,9 @@ public class Sign extends AbstractConnector {
         } catch (InvalidKeyException e) {
             log.error(e);
         }
+        catch (NullPointerException e){
+            log.error("Secret is not provided",e);
+        }
+
     }
 }

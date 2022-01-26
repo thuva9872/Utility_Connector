@@ -22,6 +22,7 @@ package org.wso2.carbon.esb.connector.string.utils;
 
 import org.apache.commons.lang.StringUtils;
 
+
 public class CaseTransformer {
 
     private CaseTransformer() {
@@ -29,6 +30,7 @@ public class CaseTransformer {
     }
 
     public static String transformToLowerCase(String string) {
+
         String transformedString = StringUtils.lowerCase(string);
         return transformedString;
     }

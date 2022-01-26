@@ -26,7 +26,7 @@
         <log level="full">
             <property name="regex" expression="$func:regex"/>
             <property name="string" expression="$func:string"/>
-            <property name="saveTo" expression="$func:target"/>
+            <property name="target" expression="$func:target"/>
         </log>
         <class name="org.wso2.carbon.esb.connector.string.RegexMatcher"/>
     </sequence>
