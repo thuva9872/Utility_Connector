@@ -42,7 +42,7 @@ public class GetRandomNumber extends AbstractConnector {
         String saveTo = saveToPropertyOptional.orElse(Constant.saveToProperty);
         int origin = originOptional.orElse(Constant.intMin);
         int bound = boundOptional.orElse(Constant.intMax);
-        int randomNumber = 0;
+        int randomNumber;
         try {
             randomNumber = RandomNumberGenerator.generateRandomInteger(origin, bound);
             messageContext.setProperty(saveTo, randomNumber);

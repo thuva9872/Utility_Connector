@@ -53,8 +53,8 @@ public class RegexMatcher extends AbstractConnector {
     }
 
     private Boolean matches(String regex,String input){
-        Boolean matching = Pattern.matches(regex, input);
-        return matching;
+
+        return Pattern.matches(regex, input);
     }
 }
 

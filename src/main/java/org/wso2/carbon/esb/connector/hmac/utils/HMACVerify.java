@@ -34,7 +34,6 @@ public class HMACVerify {
     public static boolean verify(String payload, String secret, String algorithm, String signature) throws NoSuchAlgorithmException, InvalidKeyException {
 
         String payloadSignature = HMACGenerator.generateSignature(payload, secret, algorithm);
-        boolean result = StringUtils.equals(signature, payloadSignature);
-        return result;
+        return StringUtils.equals(signature, payloadSignature);
     }
 }

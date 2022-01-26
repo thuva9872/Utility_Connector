@@ -26,9 +26,4 @@ public class NoSuchContentTypeException extends Exception {
 
         super(message);
     }
-
-    public NoSuchContentTypeException(String message, Throwable cause) {
-
-        super(message, cause);
-    }
 }

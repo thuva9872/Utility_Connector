@@ -31,13 +31,11 @@ public class CaseTransformer {
 
     public static String transformToLowerCase(String string) {
 
-        String transformedString = StringUtils.lowerCase(string);
-        return transformedString;
+        return StringUtils.lowerCase(string);
     }
 
     public static String transformToUpperCase(String string) {
 
-        String transformedString = StringUtils.upperCase(string);
-        return transformedString;
+        return StringUtils.upperCase(string);
     }
 }

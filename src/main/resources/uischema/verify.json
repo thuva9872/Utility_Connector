@@ -65,13 +65,13 @@
         "defaultValue": "HmacSHA1",
         "required": "false",
         "comboValues": [
-          "HmacSHA1",
-          "HmacSHA256",
-          "HmacSHA384",
-          "HmacSHA512",
-          "HmacMD5"
+          "HMACSHA1",
+          "HMACSHA256",
+          "HMACSHA384",
+          "HMACSHA512",
+          "HMACMD5"
         ],
-        "helpTip": "Is there a header in the CSV payload ? Default is Absent"
+        "helpTip": ""
       }
     },
     {
@@ -80,9 +80,9 @@
         "name": "target",
         "displayName": "Target Property",
         "inputType": "stringOrExpression",
-        "defaultValue": "sign",
+        "defaultValue": "verify",
         "required": "true",
-        "helpTip": "Enter the property name. (default:'sign')"
+        "helpTip": "Enter the property name. (default:'verify')"
       }
     }
   ]
