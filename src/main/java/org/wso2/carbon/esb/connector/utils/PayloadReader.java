@@ -33,7 +33,12 @@ public class PayloadReader {
 
     private static final String payloadTypePropertyName = "messageType";
 
-    //get the payload from the body of message context
+    /**
+     * get the payload from the body of message context
+     *
+     * @param messageContext MessageContext.
+     * @return String payload.
+     */
     public static String getPayload(MessageContext messageContext) throws NoSuchContentTypeException,
             PayloadNotFoundException {
 
@@ -52,7 +57,12 @@ public class PayloadReader {
         }
     }
 
-    //get the payload of Content-Type text/plain as a string.
+    /**
+     * get the payload of Content-Type text/plain as a string
+     *
+     * @param messageContext MessageContext.
+     * @return String payload.
+     */
     public static String getTextPayload(MessageContext messageContext) throws PayloadNotFoundException {
         //check whether body exist or not
         if (messageContext.getEnvelope().getBody() == null || messageContext.getEnvelope().getBody().getFirstElement() == null) {
@@ -68,7 +78,12 @@ public class PayloadReader {
         }
     }
 
-    //get the payload of Content-Type application/xml as a string.
+    /**
+     * get the payload of Content-Type application/xml as a string
+     *
+     * @param messageContext MessageContext.
+     * @return String payload.
+     */
     public static String getXMLPayload(MessageContext messageContext) throws PayloadNotFoundException {
         //check whether payload exist or not
         if (messageContext.getEnvelope().getBody() == null) {
@@ -82,7 +97,12 @@ public class PayloadReader {
         }
     }
 
-    //get the payload of Content-Type application/json as a string.
+    /**
+     * get the payload of Content-Type application/json as a string
+     *
+     * @param messageContext MessageContext.
+     * @return String payload.
+     */
     public static String getJSONPayload(MessageContext messageContext) {
 
         return JsonUtil.jsonPayloadToString(((Axis2MessageContext) messageContext).getAxis2MessageContext());

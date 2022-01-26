@@ -31,6 +31,14 @@ public class HMACVerify {
 
     }
 
+    /**
+     * Verify the payload using the signature
+     *
+     * @param payload   String
+     * @param secret    String
+     * @param algorithm Signing algorithm
+     * @return boolean value of verified or not.
+     */
     public static boolean verify(String payload, String secret, String algorithm, String signature) throws NoSuchAlgorithmException, InvalidKeyException {
         //generate a signature for the payload using the algorithm and secret provided.
         String payloadSignature = HMACGenerator.generateSignature(payload, secret, algorithm);

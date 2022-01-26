@@ -38,6 +38,14 @@ public class HMACGenerator {
 
     private static final Map<String, Mac> macInstancesMap = new ConcurrentHashMap<>();
 
+    /**
+     * Generate a signature for the payload
+     *
+     * @param payload   String.
+     * @param secret    Secret used to sign the payload.
+     * @param algorithm Signing algorithm
+     * @return Signature for the payload
+     */
     public static String generateSignature(String payload, String secret, String algorithm) throws NoSuchAlgorithmException, InvalidKeyException {
 
         try {
@@ -54,6 +62,7 @@ public class HMACGenerator {
             throw new InvalidKeyException(e);
         }
     }
+
     //Convert the byte array to string
     private static String toHexString(byte[] bytes) {
 
