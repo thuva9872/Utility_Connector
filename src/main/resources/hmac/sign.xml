@@ -17,7 +17,7 @@
   ~  * under the License.
   ~  */
   -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="hmac.Sign">
+<template xmlns="http://ws.apache.org/ns/synapse" name="signature.Generate">
     <parameter name="payload"/>
     <parameter name="customPayload"/>
     <parameter name="secret"/>
