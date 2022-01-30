@@ -29,6 +29,9 @@ public class Date {
 
     }
 
+    /*
+     *
+     */
     public static String getDate(String dateFormat) {
 
         Format formatter;

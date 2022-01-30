@@ -28,6 +28,13 @@ public class RandomNumberGenerator {
 
     }
 
+    /**
+     * Generate a random integer number
+     *
+     * @param origin Lower bound for the random number
+     * @param bound  Upper bound for the random number
+     * @return random integer in the given range
+     */
     public static int generateRandomInteger(int origin, int bound) {
 
         try {

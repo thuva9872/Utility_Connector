@@ -20,11 +20,11 @@
   -->
 <component name="hmac" type="synapse/template">
     <subComponents>
-        <component name="hmac.Sign">
+        <component name="signature.Generate">
             <file>sign.xml</file>
             <description>Wso2 connector method</description>
         </component>
-        <component name="hmac.Verify">
+        <component name="signature.Verify">
             <file>verify.xml</file>
             <description>Wso2 connector method</description>
         </component>

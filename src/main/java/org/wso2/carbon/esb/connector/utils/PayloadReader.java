@@ -33,6 +33,12 @@ public class PayloadReader {
 
     private static final String payloadTypePropertyName = "messageType";
 
+    /**
+     * get the payload from the body of message context
+     *
+     * @param messageContext MessageContext.
+     * @return String payload.
+     */
     public static String getPayload(MessageContext messageContext) throws NoSuchContentTypeException,
             PayloadNotFoundException {
 
@@ -51,11 +57,18 @@ public class PayloadReader {
         }
     }
 
+    /**
+     * get the payload of Content-Type text/plain as a string
+     *
+     * @param messageContext MessageContext.
+     * @return String payload.
+     */
     public static String getTextPayload(MessageContext messageContext) throws PayloadNotFoundException {
-
+        //check whether body exist or not
         if (messageContext.getEnvelope().getBody() == null || messageContext.getEnvelope().getBody().getFirstElement() == null) {
             throw new PayloadNotFoundException();
         } else {
+            //reading the text payload as string
             String payload = messageContext.getEnvelope().getBody().getFirstElement().getText();
             if (payload == null) {
                 throw new PayloadNotFoundException();
@@ -65,18 +78,31 @@ public class PayloadReader {
         }
     }
 
+    /**
+     * get the payload of Content-Type application/xml as a string
+     *
+     * @param messageContext MessageContext.
+     * @return String payload.
+     */
     public static String getXMLPayload(MessageContext messageContext) throws PayloadNotFoundException {
-
+        //check whether payload exist or not
         if (messageContext.getEnvelope().getBody() == null) {
             throw new PayloadNotFoundException();
         } else if (messageContext.getEnvelope().getBody().getFirstElement() == null) {
             return "";
         } else {
+            //read the xml payload
             OMElement el = PayloadHelper.getXMLPayload(messageContext.getEnvelope());
             return el.toString();
         }
     }
 
+    /**
+     * get the payload of Content-Type application/json as a string
+     *
+     * @param messageContext MessageContext.
+     * @return String payload.
+     */
     public static String getJSONPayload(MessageContext messageContext) {
 
         return JsonUtil.jsonPayloadToString(((Axis2MessageContext) messageContext).getAxis2MessageContext());

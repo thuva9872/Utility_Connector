@@ -29,11 +29,23 @@ public class CaseTransformer {
 
     }
 
+    /**
+     * Transform the string to lowercase
+     *
+     * @param string String to transform.
+     * @return String transformed string.
+     */
     public static String transformToLowerCase(String string) {
 
         return StringUtils.lowerCase(string);
     }
 
+    /**
+     * Transform the string to uppercase
+     *
+     * @param string String to transform.
+     * @return String transformed string.
+     */
     public static String transformToUpperCase(String string) {
 
         return StringUtils.upperCase(string);

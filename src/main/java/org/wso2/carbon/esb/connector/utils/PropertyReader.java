@@ -49,6 +49,13 @@ public class PropertyReader {
         return Optional.empty();
     }
 
+    /**
+     * Read an int parameter
+     *
+     * @param mc           SimpleMessageContext.
+     * @param parameterKey Key of the parameter.
+     * @return Optional int of the parameter value.
+     */
     public static Optional<Integer> getIntProperty(MessageContext mc, String parameterKey) {
 
         Optional<String> parameter = getStringProperty(mc, parameterKey);
@@ -61,6 +68,13 @@ public class PropertyReader {
         });
     }
 
+    /**
+     * Read a enum parameter
+     *
+     * @param mc           SimpleMessageContext.
+     * @param parameterKey Key of the parameter.
+     * @return Enum of the parameter value.
+     */
     public static <E extends Enum<E>> E getEnumProperty(MessageContext mc, String parameterKey, Class<E> enumType,
                                                         E defaultValue) throws InvalidParameterValueException {
 

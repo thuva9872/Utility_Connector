@@ -41,12 +41,13 @@ public class Sign extends AbstractConnector {
 
     @Override
     public void connect(MessageContext messageContext) throws ConnectException {
-
+        //Reading properties from the message context
         Optional<String> payloadFromOptional = PropertyReader.getStringProperty(messageContext, "payload");
         Optional<String> customPayloadOptional = PropertyReader.getStringProperty(messageContext, "customPayload");
         Optional<String> secretOptional = PropertyReader.getStringProperty(messageContext, "secret");
         Optional<String> saveToPropertyOptional = PropertyReader.getStringProperty(messageContext, "target");
         String payload = null;
+        //Reading the payload from body or property
         if (payloadFromOptional.isPresent() && StringUtils.equalsIgnoreCase(payloadFromOptional.get(),
                 Constant.payloadFromDefault)) {
             try {
@@ -65,6 +66,7 @@ public class Sign extends AbstractConnector {
             HMACAlgorithm algorithm = PropertyReader.getEnumProperty(messageContext, "algorithm", HMACAlgorithm.class
                     , HMACAlgorithm.HMACSHA1);
             try {
+                //Generate signature for the payload
                 String sign = HMACGenerator.generateSignature(payload, secret, algorithm.toString());
                 messageContext.setProperty(saveToProperty, sign);
             } catch (NoSuchAlgorithmException e) {

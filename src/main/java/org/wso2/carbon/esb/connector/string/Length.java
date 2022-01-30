@@ -34,11 +34,12 @@ public class Length extends AbstractConnector {
 
     @Override
     public void connect(MessageContext messageContext) throws ConnectException {
-
+        //Read the properties from message context
         Optional<String> stringOptional = getStringProperty(messageContext, "string");
         Optional<String> saveToPropertyOptional = getStringProperty(messageContext, "target");
         String string = stringOptional.orElse("");
         String saveTo = saveToPropertyOptional.orElse(Constant.SaveToPropertyLength);
+        //Calculate the length of the string
         int length = StringUtils.length(string);
         messageContext.setProperty(saveTo, length);
     }

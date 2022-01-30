@@ -17,7 +17,7 @@
   ~  * under the License.
   ~  */
   -->
-<template xmlns="http://ws.apache.org/ns/synapse" name="hmac.Verify">
+<template xmlns="http://ws.apache.org/ns/synapse" name="signature.Verify">
     <parameter name="payload"/>
     <parameter name="customPayload"/>
     <parameter name="signature"/>
