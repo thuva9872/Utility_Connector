@@ -27,4 +27,5 @@
         <description>WSO2 Utility Connector</description>
     </component>
     <icon>icon/icon-small.gif</icon>
+    <type>module</type>
 </connector>
