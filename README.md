@@ -4,13 +4,12 @@ The Utility Module allows you to do math function such as generating a random in
 
 To see the available Utility Module, navigate to the [connector store](https://store.wso2.com/store/assets/esbconnector/list) and search for "Utility".
 
-<!-- <img src="{{base_path}}/assets/img/integrate/connectors/" title="Utility Module Store" width="200" alt="Utility Module Store"/> -->
 
 ## Compatibility
 
-| Connector version | Supported product versions |
-| ------------- |------------- |
-|  [1.0.0](https://github.com/wso2-extensions/)        |  APIM 4.0.0, EI 7.1.0, EI 7.0.x, EI 6.6.0, EI 6.5.0, EI 6.4.0 |
+| Connector version                                                    | Supported product versions |
+|----------------------------------------------------------------------|------------- |
+| [1.0.0](https://github.com/wso2-extensions/mediation-utility-module) |  APIM 4.0.0, EI 7.1.0, EI 7.0.x, EI 6.6.0, EI 6.5.0, EI 6.4.0 |
 
 For older versions, see the details in the connector store.
 
