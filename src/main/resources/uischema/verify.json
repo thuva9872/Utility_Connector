@@ -1,6 +1,6 @@
 {
   "connectorName": "Utility",
-  "operationName": "hmac.Verify",
+  "operationName": "signature.Verify",
   "title": "",
   "help": "",
   "elements": [
